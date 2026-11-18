@@ -1,0 +1,8 @@
+# Output of the scripts and confidential input data are never committed.
+output/
+data/*
+!data/README.md
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
