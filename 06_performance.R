@@ -16,8 +16,8 @@
 # The measures are then summarized by scenario and model (sections 5 and 6).
 # Sections 7 to 10 add the measures of RSR, which 05_rsr.R calculated from
 # the fits of ST (X1, X2), and compare the seven estimators within
-# replicates: log-index RMSE against ST (none) (Fig. 6), the change error in
-# E2 against its first-order approximation (Section 3.5) and the scenario
+# replicates: log-index RMSE against ST (none) (Fig. 5), the change error in
+# E2 against its first-order approximation (Section 3.4) and the scenario
 # pairs of Table S2. Run 05_rsr.R before this script.
 #
 # Input:
@@ -432,7 +432,7 @@ coefficient_measures <- rbind(
 # Models are paired within replicates in which both fits converged (Section
 # 2.6). For each scenario and each of the other five models and RSR (a), the
 # table gives the mean of the within-replicate differences from ST (none)
-# (b) in log-index RMSE (Fig. 6, Section 3.4) and in the RMSE of the
+# (b) in log-index RMSE (Fig. 5, Section 3.3) and in the RMSE of the
 # predicted log density.
 reference_measures <- index_measures[
   model_id == reference_model,

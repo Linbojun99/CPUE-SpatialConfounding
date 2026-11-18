@@ -1,7 +1,7 @@
 # ==============================================================================
 # 08b_gaussian_summaries.R
 #
-# Summaries of the Gaussian simulation (Section 3.6, Fig. 9, Tables S5 and
+# Summaries of the Gaussian simulation (Section 3.5, Fig. S16, Tables S5 and
 # S9): coefficient and index performance of every run, the calibration rule
 # that selects the basis dimension k, the paired G2-minus-G1t change error
 # with its first-order approximation, the theoretical bias, and the pooled
@@ -213,7 +213,7 @@ print(all_summaries[setting == "reporting" & k == selected_k])
 # 0 in G2. Within each replicate of the reporting runs:
 #   paired_change_error  change error in G2 minus change error in G1t
 #   nominal_first_order  -(estimate - true coefficient of X1) * trend of X1
-#                        (Section 2.5), the approximation shown in Fig. 9d
+#                        (Section 2.5), the approximation shown in Fig. S16d
 #   weighted_first_order the same with the change in the density-weighted
 #                        mean of X1 in place of the nominal trend
 #   remainder            paired_change_error - nominal_first_order
@@ -273,7 +273,7 @@ print(paired_summary[k == selected_k])
 #   projection  the theoretical bias (%): the coefficient of X1 in the
 #               linear projection of the spatial effect on the year effects,
 #               X1 and X2 over the grid, divided by the true coefficient of
-#               X1 (Eq. 18, dashed line in Fig. 9b)
+#               X1 (Eq. 18, dashed line in Fig. S16b)
 #   retained    the share of the variance of X1 at the sampled locations
 #               that remains in the spatial+ first-stage residuals
 diagnostic_rows <- list()

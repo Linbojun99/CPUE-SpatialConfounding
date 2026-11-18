@@ -12,7 +12,7 @@
 #
 # Eight runs are made: the calibration of the basis dimension k (G0 only,
 # k = 25, 50, 100, replicates independent of all other runs), the reporting
-# runs (four scenarios, k = 25, 50, 100, of which k = 50 gives Fig. 9 and
+# runs (four scenarios, k = 25, 50, 100, of which k = 50 gives Fig. S16 and
 # Table S9) and two sensitivity runs at k = 50 without the annual component
 # of X2 or of both covariates (Table S5).
 #
@@ -86,7 +86,7 @@ gaussian_scenarios <- data.table(
 
 # Runs.
 #   setting       "calibration"     selection of k (Table S5)
-#                 "reporting"       results of the paper (Fig. 9, Tables S5
+#                 "reporting"       results of the paper (Fig. S16, Tables S5
 #                                   and S9)
 #                 "x1_annual"       sensitivity: no annual component in X2
 #                 "time_invariant"  sensitivity: no annual component in X1

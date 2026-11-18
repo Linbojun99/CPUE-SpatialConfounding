@@ -1,7 +1,7 @@
 # ==============================================================================
-# figures/fig08_coefficient_bias_change_error.R
+# figures/fig07_coefficient_bias_change_error.R
 #
-# Figure 8: mean relative error of the X1 coefficient (horizontal axis)
+# Figure 7: mean relative error of the X1 coefficient (horizontal axis)
 # against mean change error (Eq. 22, vertical axis) for the five estimators
 # that estimate the X1 coefficient.
 #   (a)  A4, where X1 is a density covariate without a trend
@@ -18,8 +18,8 @@
 #   output/performance/rsr_coefficient_summary.csv           05_rsr.R
 #   output/performance/rsr_index_summary.csv                 05_rsr.R
 # Output:
-#   output/figures/fig08_coefficient_bias_change_error.png
-#   output/figures/fig08_coefficient_bias_change_error.pdf
+#   output/figures/fig07_coefficient_bias_change_error.png
+#   output/figures/fig07_coefficient_bias_change_error.pdf
 # ==============================================================================
 
 source("00_settings.R")
@@ -205,7 +205,7 @@ figure <- panels[["A4"]] / panels[["E2"]] +
   )
 
 ggsave(
-  file.path(dir_figures, "fig08_coefficient_bias_change_error.png"),
+  file.path(dir_figures, "fig07_coefficient_bias_change_error.png"),
   plot   = figure,
   width  = figure_width_single,
   height = 112,
@@ -215,7 +215,7 @@ ggsave(
   device = ragg::agg_png
 )
 ggsave(
-  file.path(dir_figures, "fig08_coefficient_bias_change_error.pdf"),
+  file.path(dir_figures, "fig07_coefficient_bias_change_error.pdf"),
   plot   = figure,
   width  = figure_width_single,
   height = 112,

@@ -2,10 +2,10 @@
 # figures/figS14_annual_errors.R
 #
 # Figure S14: annual errors of the index, log(estimated index / true index),
-# in A4, E1 and E3. Columns show the six fitted models and RSR and rows the
-# scenarios. Lines show the median and bands the 10% and 90% quantiles over
-# replicates; the grey line marks equality of the estimated and the true
-# index. The panels for E2 are in Figure 7.
+# in A4, E1, E3 and E2. Rows show the scenarios and columns the six fitted
+# models and RSR. Lines show the median and bands the 10% and 90% quantiles
+# over replicates; the grey line marks zero, where the estimated and the
+# true index are equal. The errors use the annual indices before centring.
 #
 # Input:
 #   output/performance/performance_index_years.csv   06_performance.R
@@ -28,9 +28,9 @@ fits        <- fread(file.path(dir_performance, "performance_fits.csv"))
 rsr_years   <- fread(file.path(dir_rsr, "rsr_years.csv"))
 
 
-# 2. Annual errors in A4, E1 and E3 --------------------------------------------
+# 2. Annual errors in A4, E1, E3 and E2 ----------------------------------------
 
-row_scenarios <- c("A4", "E1", "E3")
+row_scenarios <- c("A4", "E1", "E3", "E2")
 
 # Fitted models: error of the log index in the fits that converged.
 fits_evaluated <- fits[pred_eval == TRUE, .(scenario_id, model_id, rep)]
@@ -62,6 +62,12 @@ error_summary[, model := factor(model_id, levels = estimator_order)]
 error_summary[, panel := factor(estimator_labels[model_id],
                                 levels = estimator_labels[estimator_order])]
 
+# Range of the vertical axis: the largest absolute value of the quantiles,
+# rounded up to one decimal.
+y_limit <- ceiling(
+  10 * max(abs(c(error_summary$low, error_summary$high)))
+) / 10
+
 
 # 3. Figure --------------------------------------------------------------------
 
@@ -69,11 +75,11 @@ figure <- ggplot(
   error_summary,
   aes(year, median, colour = model, fill = model, shape = model)
 ) +
+  geom_ribbon(aes(ymin = low, ymax = high), alpha = 0.19, colour = NA) +
   geom_hline(yintercept = 0, colour = colour_reference,
              linewidth = line_width_reference) +
-  geom_ribbon(aes(ymin = low, ymax = high), alpha = 0.18, colour = NA) +
-  geom_line(linewidth = 0.4) +
-  geom_point(size = 1.1, stroke = 0.3) +
+  geom_line(linewidth = 0.38) +
+  geom_point(size = 0.88, stroke = 0.29) +
   facet_grid(scenario ~ panel, labeller = labeller(panel = label_parsed)) +
   scale_colour_manual(values = estimator_colours,
                       limits = estimator_order) +
@@ -81,8 +87,8 @@ figure <- ggplot(
   scale_shape_manual(values = estimator_shapes, limits = estimator_order) +
   scale_x_continuous(breaks = year_breaks, labels = year_labels_narrow) +
   scale_y_continuous(
-    limits = c(-0.5, 0.5),
-    breaks = c(-0.4, -0.2, 0, 0.2, 0.4),
+    limits = c(-y_limit, y_limit),
+    breaks = c(-0.4, 0, 0.4),
     labels = scales::label_number(style_negative = "minus")
   ) +
   labs(x = "Year", y = "log(estimated index / true index)") +
@@ -92,9 +98,10 @@ figure <- ggplot(
       element_text(size = 7.5, hjust = c(0, 0.5, 1))
     ),
     legend.position = "none",
-    strip.text.x    = element_text(size = 7.5),
-    strip.text.y    = element_text(size = 8.5, angle = 0),
-    panel.spacing   = unit(1.6, "mm")
+    strip.text      = element_text(size = 7.2),
+    strip.text.y    = element_text(angle = 0),
+    panel.spacing.x = unit(1.6, "mm"),
+    panel.spacing.y = unit(2, "mm")
   )
 
 
@@ -104,7 +111,7 @@ ggsave(
   file.path(dir_figures, "figS14_annual_errors.png"),
   plot   = figure,
   width  = figure_width_double,
-  height = 108,
+  height = 135,
   units  = "mm",
   dpi    = figure_dpi,
   bg     = "white",
@@ -114,7 +121,7 @@ ggsave(
   file.path(dir_figures, "figS14_annual_errors.pdf"),
   plot   = figure,
   width  = figure_width_double,
-  height = 108,
+  height = 135,
   units  = "mm",
   dpi    = figure_dpi,
   bg     = "white",

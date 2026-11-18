@@ -1,7 +1,7 @@
 # ==============================================================================
-# figures/fig09_gaussian_simulation.R
+# figures/figS16_gaussian_simulation.R
 #
-# Figure 9: results of the Gaussian simulation with basis dimension k = 50.
+# Figure S16: results of the Gaussian simulation with basis dimension k = 50.
 # Points show means and horizontal segments the 10% and 90% quantiles over
 # the 50 replicates, for the four estimators.
 #   (a), (b)  relative error of the X1 coefficient in G0 and G1, with the
@@ -16,8 +16,8 @@
 #   output/gaussian/paired_replicates.csv            08b_gaussian_summaries.R
 #   output/gaussian/diagnostic_summary.csv           08b_gaussian_summaries.R
 # Output:
-#   output/figures/fig09_gaussian_simulation.png
-#   output/figures/fig09_gaussian_simulation.pdf
+#   output/figures/figS16_gaussian_simulation.png
+#   output/figures/figS16_gaussian_simulation.pdf
 # ==============================================================================
 
 source("00_settings.R")
@@ -222,7 +222,7 @@ figure <- (coefficient_panels[["G0"]] | coefficient_panels[["G1"]]) /
         plot.margin = margin(2, 2, 2, 2, "mm"))
 
 ggsave(
-  file.path(dir_figures, "fig09_gaussian_simulation.png"),
+  file.path(dir_figures, "figS16_gaussian_simulation.png"),
   plot   = figure,
   width  = figure_width_double,
   height = 106,
@@ -232,7 +232,7 @@ ggsave(
   device = ragg::agg_png
 )
 ggsave(
-  file.path(dir_figures, "fig09_gaussian_simulation.pdf"),
+  file.path(dir_figures, "figS16_gaussian_simulation.pdf"),
   plot   = figure,
   width  = figure_width_double,
   height = 106,

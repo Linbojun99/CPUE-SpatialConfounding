@@ -489,7 +489,7 @@ fwrite(index_summary,
 # differs from that of its source model. To first order the difference is
 # -delta_beta1 * s_X, where delta_beta1 is the adjustment of the X1
 # coefficient (Eq. 17) and s_X, the SD of X1 without the trend, is the change
-# in X1 added between the first and last year (Eq. 8, Section 3.5 and
+# in X1 added between the first and last year (Eq. 8, Section 3.4 and
 # Supplementary material). The difference does not depend on the index
 # calculation, because both estimators use the same ratio.
 if ("E2" %in% run_scenarios) {
